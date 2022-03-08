@@ -393,12 +393,7 @@ foreach ($urls as $url) {
     preg_match('/item_name\":\"(.*?)\"/i', $body, $matches);
     $name = $matches[1];
 
-    print tab([
-        ['text' => $mid],
-        ['text' => '$' . number_format($price, 2)],
-        ['text' => $stock, 'length' => 5],
-        ['text' => $name],
-    ]);
+    print tab([$mid, $name, $stock, $price]);
 }
 
 print "I am done!\n";
@@ -406,9 +401,8 @@ print "I am done!\n";
 function tab(array $elements): string
 {
     $output = '';
-    foreach ($elements as $element => $attributes) {
-
-        $output .= str_pad($element['text'], $element['length'] ?: 15, " ", STR_PAD_RIGHT);
+    foreach ($elements as $element) {
+        $output .= str_pad($element, 20, " ", STR_PAD_RIGHT);
     }
     return $output;
 }
