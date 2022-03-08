@@ -393,17 +393,19 @@ foreach ($urls as $url) {
     preg_match('/item_name\":\"(.*?)\"/i', $body, $matches);
     $name = $matches[1];
 
-    var_dump([
-        'url' => $url,
-        'sku' => $mid,
-        'name' => $name,
-        'stock' => $stock,
-        'price' => $price,
-    ]);
+    print tab([$mid, $name, $stock, $price]);
 }
 
 print "I am done!\n";
 
+function tab(array $elements): string
+{
+    $output = '';
+    foreach ($elements as $element) {
+        $output .= str_pad($element, 20, " ", STR_PAD_RIGHT);
+    }
+    return $output;
+}
 
 function accent2ascii(string $str): string
 {
