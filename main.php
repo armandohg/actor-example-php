@@ -375,7 +375,7 @@ print "ENV vars:\n";
 print_r($_ENV);
 
 foreach ($urls as $url) {
-    print "Fetching {$url} ...\n";
+    //print "Fetching {$url} ...\n";
 
     $regex = '/[A-Z]{3}-\d+/m';
     preg_match_all($regex, $url, $matches, PREG_SET_ORDER, 0);
@@ -393,7 +393,12 @@ foreach ($urls as $url) {
     preg_match('/item_name\":\"(.*?)\"/i', $body, $matches);
     $name = $matches[1];
 
-    print tab([$mid, $name, $stock, $price]);
+    print tab([
+        $mid,
+        $stock,
+        '$' . number_format($price, 2),
+        $name
+    ]);
 }
 
 print "I am done!\n";
