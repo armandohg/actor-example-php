@@ -399,6 +399,7 @@ foreach ($urls as $url) {
         '$' . number_format($price, 2),
         $name
     ]);
+    print "\n";
 }
 
 print "I am done!\n";
